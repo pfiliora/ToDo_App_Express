@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0;'>
+    <title>Todo List</title>
+    <link rel='stylesheet' href='styles/reset.css'>
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<link href="styles/tasks.css" rel="stylesheet">
+		<link rel='stylesheet' href='styles/main.css'>
+</head>
+<body id="todoapp">
+
+	<!-- NAV BAR -->
+	<nav class="navbar navbar-default">
+
+	</nav><!-- nav -->
+
+	<!-- BODY -->
+	<div class="container">
+
+		<div class="col-md-6 todo-col">
+			<div class="panel panel-success">
+				<div class="panel-heading">ToDo List</div>
+			  <div class="panel-body">
+					<ul class="list-group js-todolist">
+						<li class="list-group-item">
+							<span class="glyphicon glyphicon-refresh todo-spinner"></span>
+						</li>
+					</ul>
+			  </div>
+			  <div class="panel-footer">
+					<div class="input-group">
+							<input type="text" class="form-control js-todo-text" placeholder="Add a task..." aria-describedby="basic-addon2">
+							<span class="input-group-addon btn-success todo-addbtn js-add-todo" id="basic-addon2">Add Todo</span>
+							<span class="input-group-addon btn-default todo-addbtn js-clear-completed" id="basic-addon2">Clear Completed</span>
+					</div><!-- js-add-todo -->
+				</div><!-- content -->
+			</div><!-- row -->
+		</div><!-- container -->
+
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src='javascript/main.js'></script>
+</body>
+</html>

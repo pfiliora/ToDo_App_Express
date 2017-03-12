@@ -1,0 +1,63 @@
+/* CURRENTLY IN: styles/main.css */
+html {
+	font-size: 12px;
+}
+
+#todoapp .todo-col {
+	/*border: 1px solid black;*/
+	text-align: center;
+}
+
+#todoapp .todo-spinner {
+	animation: spinner 2.0s linear infinite;
+}
+
+#todoapp .todolist-item {
+	font-weight: bold;
+	text-align: left;
+}
+
+#todoapp .todolist-item-done {
+	text-decoration: line-through;
+	color: grey;
+}
+
+#todoapp .todolist-icon {
+	float: right;
+	margin: 0 0.5rem;
+	overflow: visible;
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+#todoapp .check-icon {
+    background-color: #78CD51;
+    border-color: #78CD51;
+    color: #FFFFFF;
+}
+
+#todoapp .trash-icon {
+	background-color: #ff6c60;
+	border-color: #ff6c60;
+	color: #FFFFFF;
+}
+
+#todoapp .todo-addbtn {
+	cursor: pointer;
+}
+
+#todoapp .todoinput{
+	border: none;
+	overflow: visible;
+	width: 500px;
+}
+
+@keyframes spinner {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
