@@ -69,6 +69,7 @@
         });
     } // DELETE
 
+//Render todo items from lowDB with checkbox toggle and remove icone
     function render(todoItems) {
         const container = document.querySelector('.js-todolist');
         container.innerHTML = '';
@@ -77,27 +78,18 @@
             li.innerHTML = `
 <input type="text" class="todoinput" value="${todoItem.data.todo}">
 			`;
-
-            // li.innerHTML += `<span class="glyphicon glyphicon-remove todolist-icon js-todo-remove"></span>`;
             li.innerHTML += `<i class="fa fa-trash-o todolist-icon trash-icon js-todo-remove"></i>`
-
             if (todoItem.data.isDone) {
                 li.innerHTML += `<span class="glyphicon glyphicon-check check-icon todolist-icon js-todo-check"></span>`
                 li.className += `todolist-item-done`
             } else {
                 li.innerHTML += `<span class="glyphicon glyphicon-unchecked check-icon todolist-icon js-todo-check"></span>`
             }
-
-
             li.classList.add('list-group-item', 'todolist-item');
-
             container.appendChild(li);
+            // Remove Todo item on click
             li.querySelector('.js-todo-remove').addEventListener('click', (e) => {
-                console.log('about to delete LOL')
-                const {
-                    id
-                } = todoItem;
-
+                const { id } = todoItem;
                 DELETE('/api/todo/' + id)
                     .then((data) => {
                         render(data);
@@ -106,6 +98,7 @@
                         alert(e)
                     });
             });
+            // Update text & isDone, via PUT Request, on enter
             const changeInput= li.querySelector('.todoinput')
             changeInput.addEventListener('keydown', (e) => {
                 const {
@@ -126,19 +119,10 @@
                         .catch((e) => {
                             alert(e)
                         })
-
-                        // POST('/api/todos', {
-                        //     todo: input.value,
-                        //     when: new Date().getTime() + 9 * 60 * 60 * 1000
-                        // }).then((data) => {
-                        //     input.removeAttribute('disabled');
-                        //     input.value = '';
-                        //     render(data);
-                        // })
                 }
             });
+            //Update isDone boolean for Todo item
             li.querySelector('.js-todo-check').addEventListener('click', (e) => {
-                // console.log(todoItem);
                 let isDone;
                 if (todoItem.data.isDone) {
                     isDone = false;
@@ -157,7 +141,7 @@
                     })
             })
         }
-
+        //Placeholder message if no ToDo items exist
         if (todoItems.length === 0) {
             container.innerHTML = `
 <li class="list-group-item">
@@ -165,14 +149,15 @@ No todoitems!
 </li>
 			`;
         }
-    } // render
+    } // End of render on page load
 
-
+    //Initializer on page load
     GET('/api/todos')
         .then((todoItems) => {
             render(todoItems);
         });
 
+    //Add ToDo function, User & Server Side processing
     const addToDo = () => {
         const input = document.querySelector('.js-todo-text');
         input.setAttribute('disabled', 'disabled');
@@ -186,6 +171,8 @@ No todoitems!
         });
     }
 
+    //Event listener for adding a new ToDo item
+    document.querySelector('.js-add-todo').addEventListener('click', (e) => addToDo())
     document.querySelector('.js-todo-text').addEventListener('keydown', (e) => {
         const {
             keyCode,
@@ -196,21 +183,9 @@ No todoitems!
         }
     });
 
-    document.querySelector('.js-add-todo').addEventListener('click', (e) => addToDo())
-
+    //Event listener for Clear All Complete Tasks
     document.querySelector('.js-clear-completed').addEventListener('click', (e) => {
         console.log('clear completed')
-        // todoItems.forEach((item) => {
-        //   if (item.data.isDone === true) {
-        //     DELETE('/api/todo/' + item.id)
-        //         .then((data) => {
-        //             render(data);
-        //         })
-        //         .catch((e) => {
-        //             alert(e)
-        //         });
-        //   }
-        // })
         DELETE('/api/todos/completed')
           .then((data) => {
             render(data)
@@ -221,13 +196,3 @@ No todoitems!
     });
 
 })();
-
-/*
-	return POST('/api/todos', {
-			todo: 'wake up',
-			when: new Date().getTime() + 9 * 60 * 60 * 1000
-		});
-	.then((dataFromPostLOL) => {
-		console.log(dataFromPostLOL);
-	});
-*/

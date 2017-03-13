@@ -41,7 +41,7 @@ app.post('/api/todos', (request, response) => {
 });// POST create new todos
 
 
-// PUT ID in todos
+// PUT todos, update isDone and/or text
 app.put('/api/todo/:id', (request, response) => {
 	const dataPayload = request.body;
   const id = parseInt(request.params.id, 10);
@@ -72,7 +72,7 @@ app.delete('/api/todo/:id', (request, response) => {
 
 });// DELETE todos
 
-//DELETE COMPLETED todos
+//DELETE All COMPLETED todos
 app.delete('/api/todos/completed', (request, response) => {
     db.get('todos')
       .remove(todo => {
