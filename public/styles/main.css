@@ -50,7 +50,7 @@ html {
 #todoapp .todoinput{
 	border: none;
 	overflow: visible;
-	width: 500px;
+	width: 400px;
 }
 
 @keyframes spinner {
